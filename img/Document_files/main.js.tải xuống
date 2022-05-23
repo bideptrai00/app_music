@@ -1,0 +1,137 @@
+const $ = document.querySelector.bind(document)
+const $$ = document.querySelector.bind(document)
+
+const player = $('.player')
+const heading = $('header h2')
+const cdthumb = $('.cd-thumb')
+const audio = $('#audio')
+const cd = $('.cd')
+const playBtn = $('.btn-toggle-play')
+const app ={
+    currentInddex :0,
+    songs:[    
+    {
+        name : 'Trơn',
+        singer : 'Bình Gold',
+        img : './img/1.jpg',
+        path : './music/song1.mp3'
+    },
+    {
+        name : 'Yêu Đương Khó Quá',
+        singer : 'Erik',
+        img : './img/2.jpg',
+        path : './music/song2.mp3'
+    },
+    {
+        name : 'Thức giấc',
+        singer : 'quên',
+        img : './img/3.jpg',
+        path : './music/song3.mp3'
+    },
+    {
+        name : 'Có hẹn với thanh xuân',
+        singer : 'MONTER',
+        img : './img/4.jpg',
+        path : './music/song4.mp3'
+    },
+    {
+        name : 'Ái nộ',
+        singer : 'MASEW',
+        img : './img/5.jpg',
+        path : './music/song5.mp3'
+    },{
+        name : 'Trơn',
+        singer : 'Bình Gold',
+        img : './img/1.jpg',
+        path : './music/song1.mp3'
+    },
+    {
+        name : 'Yêu Đương Khó Quá',
+        singer : 'Erik',
+        img : './img/2.jpg',
+        path : './music/song2.mp3'
+    },
+    {
+        name : 'Thức giấc',
+        singer : 'quên',
+        img : './img/3.jpg',
+        path : './music/song3.mp3'
+    },
+    {
+        name : 'Có hẹn với thanh xuân',
+        singer : 'MONTER',
+        img : './img/4.jpg',
+        path : './music/song4.mp3'
+    },
+    {
+        name : 'Ái nộ',
+        singer : 'MASEW',
+        img : './img/5.jpg',
+        path : './music/song5.mp3'
+    }],
+    defineProperties : function(){
+        Object.defineProperty(this,'currentSong',{
+            get() { return this.songs[this.currentInddex]}
+            
+        })
+    },
+    render : function(){
+        var htmls = this.songs.map((song)=>{
+            return `
+         <div class="song">
+         <div class="thumb" style="background-image: url('${song.img}')">
+            </div>
+            <div class="body">
+              <h3 class="title">${song.name}</h3>
+              <p class="author">${song.singer}</p>
+            </div>
+            <div class="option">
+              <i class="fas fa-ellipsis-h"></i>
+            </div>
+          </div>         
+      </div>`
+        })
+        $('.playlist').innerHTML = htmls.join(' ')
+      
+    },
+    handleEvents :function(){
+      
+        const cdWidth = cd.offsetWidth 
+        document.onscroll = function(){
+                  
+           const scroll = window.scrollY  
+           const cdNewWidth = cdWidth - scroll
+           console.log(cdNewWidth)
+           cd.style.width = cdNewWidth>0? cdNewWidth + 'px':0 
+           cd.style.opacity = cdNewWidth/cdWidth  
+
+
+        // xu ly khi play
+        playBtn.onclick = function(){
+            audio.pause()
+            player.classList.add('playing')
+        }
+        }
+    },
+    loadCurrentSong : function(){
+      
+
+        heading.textContent =this.currentSong.name
+        cdthumb.style.backgroundImage =`url('${this.currentSong.img}')`
+        audio.src = this.currentSong.path
+    },
+    start: function(){
+        // ĐỊNH NGHĨA THUỘC TÍNH CHO OBJECT
+        this.defineProperties()
+        // tai thong tin bai hat dau tien vao UI
+        this.loadCurrentSong()
+        // SỬ LÝ SỰ KIỆN 
+        
+        this.handleEvents()
+        // RENDER PLAYLIST
+        this.render()
+    }        
+    
+}
+app.start()
+

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+   <title>Document</title>
+</head>
+<body>
+    <div class="player">
+        <div class="dashboard">
+            <div class="heading">
+                <header>
+                   <h4>Now playing</h4> 
+                   <h2>Trơn</h2>
+                </header>
+                
+            </div>
+            <div class="cd">
+                <div class="cd-thumb" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2nU1-OQrvCKlI_fhwGe0uZDnV9y-Q4NIwpA&usqp=CAU')">
+                </div>
+            </div>
+            <div class="control">
+                <div class="btn btn-repeat">
+                    <i class="fa-solid fa-repeat"></i>
+                </div>
+                 
+                <div class="btn btn-prev">
+                    <i class="fa-solid fa-angles-left"></i>
+                </div>
+                <div class="btn btn-toggle-play">
+                    <i class="fa-solid fa-pause icon-pause"></i>
+                    <i class="fa-solid fa-play icon-play"></i>
+                </div>
+                <div class="btn btn-next">
+                    <i class="fa-solid fa-angles-right"></i>
+                </div>
+                <div class="btn btn-random">
+                    <i class="fa-solid fa-shuffle"></i>
+                </div>
+            </div>
+            <input id ="progress" class="progress" type="range" min="0" max="100" value="0" step="1">
+            <audio id="audio" src=""></audio>
+
+        </div>
+        <!-- List song -->
+        <div class="playlist">
+
+      </div>
+      <script src="./main.js"></script>
+</body>
+</html>
